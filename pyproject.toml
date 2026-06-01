@@ -1,0 +1,19 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "epagos-python-sdk"
+version = "0.1.0"
+description = "Thin Python wrapper for ePagos SOAP API using suds-community"
+readme = "README.md"
+requires-python = ">=3.10"
+authors = [{name = "OpenAI"}]
+dependencies = [
+  "python-dotenv>=1.0.1",
+  "suds-community>=1.2.0",
+  "typing-extensions>=4.0.0; python_version < '3.11'",
+]
+
+[tool.setuptools]
+packages = ["src"]
