@@ -8,7 +8,7 @@ SDK en Python para consumir la API SOAP de ePagos usando `suds-community`.
 
 ## Configuración
 
-El repo incluye un archivo [.env.example](/C:/404/epagos_sdks/python-sdk/.env.example) con las variables necesarias:
+El repo incluye un archivo [.env.example](https://github.com/epagos/api_python/blob/main/.env.example) con las variables necesarias:
 
 ```env
 EPAGOS_PASSWORD=
@@ -145,26 +145,24 @@ El tipo `DatosPago` del WSDL de ePagos para `obtener_pagos` expone estos filtros
 
 ## Ejemplos por método
 
-En la carpeta [examples](/C:/404/epagos_sdks/python-sdk/examples) hay un script para cada método:
+En la carpeta [examples](https://github.com/epagos/api_python/tree/main/examples) hay un script para cada método:
 
-- [examples/obtener_token.py](/C:/404/epagos_sdks/python-sdk/examples/obtener_token.py)
-- [examples/obtener_pagos.py](/C:/404/epagos_sdks/python-sdk/examples/obtener_pagos.py)
-- [examples/obtener_pagos_codigo_operacion.py](/C:/404/epagos_sdks/python-sdk/examples/obtener_pagos_codigo_operacion.py)
-- [examples/obtener_pagos_numero_operacion.py](/C:/404/epagos_sdks/python-sdk/examples/obtener_pagos_numero_operacion.py)
-- [examples/obtener_pagos_por_identificadores_externos.py](/C:/404/epagos_sdks/python-sdk/examples/obtener_pagos_por_identificadores_externos.py)
-- [examples/obtener_pagos_por_fecha.py](/C:/404/epagos_sdks/python-sdk/examples/obtener_pagos_por_fecha.py)
-- [examples/obtener_pagos_por_estado.py](/C:/404/epagos_sdks/python-sdk/examples/obtener_pagos_por_estado.py)
-- [examples/obtener_devoluciones.py](/C:/404/epagos_sdks/python-sdk/examples/obtener_devoluciones.py)
-- [examples/solicitud_pago.py](/C:/404/epagos_sdks/python-sdk/examples/solicitud_pago.py)
-- [examples/solicitud_pago_error_parametro_faltante.py](/C:/404/epagos_sdks/python-sdk/examples/solicitud_pago_error_parametro_faltante.py)
-- [examples/solicitud_pago_lote.py](/C:/404/epagos_sdks/python-sdk/examples/solicitud_pago_lote.py)
-- [examples/obtener_rendiciones.py](/C:/404/epagos_sdks/python-sdk/examples/obtener_rendiciones.py)
-- [examples/obtener_entidades_pago.py](/C:/404/epagos_sdks/python-sdk/examples/obtener_entidades_pago.py)
-- [examples/obtener_pagos_adicionales.py](/C:/404/epagos_sdks/python-sdk/examples/obtener_pagos_adicionales.py)
+- [examples/obtener_token.py](https://github.com/epagos/api_python/tree/main/examples/obtener_token.py)
+- [examples/obtener_pagos_por_estado.py](https://github.com/epagos/api_python/tree/main/examples/obtener_pagos_por_estado.py)
+- [examples/obtener_pagos_por_fecha.py](https://github.com/epagos/api_python/tree/main/examples/obtener_pagos_por_fecha.py)
+- [examples/obtener_pagos_por_id.py](https://github.com/epagos/api_python/tree/main/examples/obtener_pagos_por_id.py)
+- [examples/obtener_pagos_por_identificadores_externos.py](https://github.com/epagos/api_python/tree/main/examples/obtener_pagos_por_identificadores_externos.py)
+- [examples/obtener_devoluciones.py](https://github.com/epagos/api_python/tree/main/examples/obtener_devoluciones.py)
+- [examples/solicitud_pago.py](https://github.com/epagos/api_python/tree/main/examples/solicitud_pago.py)
+- [examples/solicitud_pago_error_parametro_faltante.py](https://github.com/epagos/api_python/tree/main/examples/solicitud_pago_error_parametro_faltante.py)
+- [examples/solicitud_pago_lote.py](https://github.com/epagos/api_python/tree/main/examples/solicitud_pago_lote.py)
+- [examples/obtener_rendiciones.py](https://github.com/epagos/api_python/tree/main/examples/obtener_rendiciones.py)
+- [examples/obtener_entidades_pago.py](https://github.com/epagos/api_python/tree/main/examples/obtener_entidades_pago.py)
+- [examples/obtener_pagos_adicionales.py](https://github.com/epagos/api_python/tree/main/examples/obtener_pagos_adicionales.py)
 
 ## Estructura general
 
-- [src/client.py](/C:/404/epagos_sdks/python-sdk/src/client.py): implementación del cliente.
-- [src/types.py](/C:/404/epagos_sdks/python-sdk/src/types.py): tipos `TypedDict` usados para los payloads.
-- [examples](/C:/404/epagos_sdks/python-sdk/examples): ejemplos de uso.
-- [.env.example](/C:/404/epagos_sdks/python-sdk/.env.example): variables de entorno base.
+- [src/client.py](https://github.com/epagos/api_python/tree/main/src/client.py): implementación del cliente.
+- [src/types.py](https://github.com/epagos/api_python/tree/main/src/types.py): tipos `TypedDict` usados para los payloads.
+- [examples](https://github.com/epagos/api_python/tree/main/examples): ejemplos de uso.
+- [.env.example](https://github.com/epagos/api_python/tree/main/.env.example): variables de entorno base.
