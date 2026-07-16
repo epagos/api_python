@@ -8,7 +8,7 @@ SDK en Python para consumir la API SOAP de ePagos usando `suds-community`.
 
 ## Configuración
 
-El repo incluye un archivo [.env.example](https://github.com/epagos/api_python/blob/main/.env.example) con las variables necesarias:
+El repo incluye un archivo [.env.example](.env.example) con las variables necesarias:
 
 ```env
 EPAGOS_PASSWORD=
@@ -31,8 +31,8 @@ Sandbox:
 
 Producción:
 
-- WSDL: `https://api.epagos.com/wsdl/2.1/index.php?wsdl`
-- Endpoint: `https://api.epagos.com/wsdl/2.1/index.php`
+- WSDL: `https://api.epagos.com/wsdl/2.5/index.php?wsdl`
+- Endpoint: `https://api.epagos.com/wsdl/2.5/index.php`
 
 ## Crear el cliente
 
@@ -78,6 +78,19 @@ Actualmente el cliente incluye estos métodos:
 - `obtener_rendiciones_post`
 - `obtener_entidades_pago_post`
 - `obtener_pagos_adicionales_post`
+- `obtener_contracargos_post`
+- `solicitud_pago_recurrente_post`
+- `solicitud_pago_recurrente_suscripcion_post`
+- `obtener_tarjetas_cliente_post`
+- `obtener_cuentas_cliente_post`
+- `generar_qr_vinculado_post`
+- `pago_lote_post`
+- `registrar_cuentas_cliente_post`
+- `obtener_resultado_debito_post`
+- `obtener_cajas_qr_post`
+- `generar_orden_qr_post`
+- `obtener_terminales_pos_post`
+- `solicitud_pago_pinpad_post`
 
 ## Ejecutar los ejemplos
 
@@ -103,9 +116,7 @@ Una vez creado el `venv`, activado el entorno e instalado el proyecto:
 
 ```powershell
 python .\examples\obtener_token.py
-python .\examples\obtener_pagos.py
-python .\examples\obtener_pagos_codigo_operacion.py
-python .\examples\obtener_pagos_numero_operacion.py
+python .\examples\obtener_pagos_por_id.py
 python .\examples\obtener_pagos_por_identificadores_externos.py
 python .\examples\obtener_pagos_por_fecha.py
 python .\examples\obtener_pagos_por_estado.py
@@ -116,12 +127,33 @@ python .\examples\solicitud_pago_lote.py
 python .\examples\obtener_rendiciones.py
 python .\examples\obtener_entidades_pago.py
 python .\examples\obtener_pagos_adicionales.py
+python .\examples\obtener_contracargos.py
+python .\examples\solicitud_pago_recurrente.py
+python .\examples\solicitud_pago_recurrente_suscripcion.py
+python .\examples\obtener_tarjetas_cliente.py
+python .\examples\obtener_cuentas_cliente.py
+python .\examples\generar_qr_vinculado.py
+python .\examples\pago_lote.py
+python .\examples\registrar_cuentas_cliente.py
+python .\examples\obtener_resultado_debito.py
+python .\examples\obtener_cajas_qr.py
+python .\examples\generar_orden_qr.py
+python .\examples\obtener_terminales_pos.py
+python .\examples\solicitud_pago_pinpad.py
 ```
 
 Cada example imprime:
 
 - `REQUEST`: el payload normalizado enviado por el cliente.
 - `RESPONSE`: la respuesta normalizada del servicio.
+
+## Tests
+
+Los tests unitarios cubren la construcción de credenciales, el orden de argumentos SOAP y los payloads normalizados de los métodos agregados:
+
+```powershell
+python -m unittest discover -s tests -v
+```
 
 ## Filtros de `obtener_pagos`
 
@@ -145,24 +177,38 @@ El tipo `DatosPago` del WSDL de ePagos para `obtener_pagos` expone estos filtros
 
 ## Ejemplos por método
 
-En la carpeta [examples](https://github.com/epagos/api_python/tree/main/examples) hay un script para cada método:
+En la carpeta [examples](examples) hay un script para cada método:
 
-- [examples/obtener_token.py](https://github.com/epagos/api_python/tree/main/examples/obtener_token.py)
-- [examples/obtener_pagos_por_estado.py](https://github.com/epagos/api_python/tree/main/examples/obtener_pagos_por_estado.py)
-- [examples/obtener_pagos_por_fecha.py](https://github.com/epagos/api_python/tree/main/examples/obtener_pagos_por_fecha.py)
-- [examples/obtener_pagos_por_id.py](https://github.com/epagos/api_python/tree/main/examples/obtener_pagos_por_id.py)
-- [examples/obtener_pagos_por_identificadores_externos.py](https://github.com/epagos/api_python/tree/main/examples/obtener_pagos_por_identificadores_externos.py)
-- [examples/obtener_devoluciones.py](https://github.com/epagos/api_python/tree/main/examples/obtener_devoluciones.py)
-- [examples/solicitud_pago.py](https://github.com/epagos/api_python/tree/main/examples/solicitud_pago.py)
-- [examples/solicitud_pago_error_parametro_faltante.py](https://github.com/epagos/api_python/tree/main/examples/solicitud_pago_error_parametro_faltante.py)
-- [examples/solicitud_pago_lote.py](https://github.com/epagos/api_python/tree/main/examples/solicitud_pago_lote.py)
-- [examples/obtener_rendiciones.py](https://github.com/epagos/api_python/tree/main/examples/obtener_rendiciones.py)
-- [examples/obtener_entidades_pago.py](https://github.com/epagos/api_python/tree/main/examples/obtener_entidades_pago.py)
-- [examples/obtener_pagos_adicionales.py](https://github.com/epagos/api_python/tree/main/examples/obtener_pagos_adicionales.py)
+- [examples/obtener_token.py](examples/obtener_token.py)
+- [examples/obtener_pagos_por_id.py](examples/obtener_pagos_por_id.py)
+- [examples/obtener_pagos_por_identificadores_externos.py](examples/obtener_pagos_por_identificadores_externos.py)
+- [examples/obtener_pagos_por_fecha.py](examples/obtener_pagos_por_fecha.py)
+- [examples/obtener_pagos_por_estado.py](examples/obtener_pagos_por_estado.py)
+- [examples/obtener_devoluciones.py](examples/obtener_devoluciones.py)
+- [examples/solicitud_pago.py](examples/solicitud_pago.py)
+- [examples/solicitud_pago_error_parametro_faltante.py](examples/solicitud_pago_error_parametro_faltante.py)
+- [examples/solicitud_pago_lote.py](examples/solicitud_pago_lote.py)
+- [examples/obtener_rendiciones.py](examples/obtener_rendiciones.py)
+- [examples/obtener_entidades_pago.py](examples/obtener_entidades_pago.py)
+- [examples/obtener_pagos_adicionales.py](examples/obtener_pagos_adicionales.py)
+- [examples/obtener_contracargos.py](examples/obtener_contracargos.py)
+- [examples/solicitud_pago_recurrente.py](examples/solicitud_pago_recurrente.py)
+- [examples/solicitud_pago_recurrente_suscripcion.py](examples/solicitud_pago_recurrente_suscripcion.py)
+- [examples/obtener_tarjetas_cliente.py](examples/obtener_tarjetas_cliente.py)
+- [examples/obtener_cuentas_cliente.py](examples/obtener_cuentas_cliente.py)
+- [examples/generar_qr_vinculado.py](examples/generar_qr_vinculado.py)
+- [examples/pago_lote.py](examples/pago_lote.py)
+- [examples/registrar_cuentas_cliente.py](examples/registrar_cuentas_cliente.py)
+- [examples/obtener_resultado_debito.py](examples/obtener_resultado_debito.py)
+- [examples/obtener_cajas_qr.py](examples/obtener_cajas_qr.py)
+- [examples/generar_orden_qr.py](examples/generar_orden_qr.py)
+- [examples/obtener_terminales_pos.py](examples/obtener_terminales_pos.py)
+- [examples/solicitud_pago_pinpad.py](examples/solicitud_pago_pinpad.py)
 
 ## Estructura general
 
-- [src/client.py](https://github.com/epagos/api_python/tree/main/src/client.py): implementación del cliente.
-- [src/types.py](https://github.com/epagos/api_python/tree/main/src/types.py): tipos `TypedDict` usados para los payloads.
-- [examples](https://github.com/epagos/api_python/tree/main/examples): ejemplos de uso.
-- [.env.example](https://github.com/epagos/api_python/tree/main/.env.example): variables de entorno base.
+- [src/client.py](src/client.py): implementación del cliente.
+- [src/types.py](src/types.py): tipos `TypedDict` usados para los payloads.
+- [tests/test_client.py](tests/test_client.py): tests unitarios del cliente.
+- [examples](examples): ejemplos de uso.
+- [.env.example](.env.example): variables de entorno base.

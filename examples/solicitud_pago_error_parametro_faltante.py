@@ -16,7 +16,6 @@ datos_operacion_pago = {
     "identificador_externo_3": "SUC-01",
     "identificador_externo_4": "CANAL-WEB",
     "id_moneda_operacion": 1,
-    # Caso de validacion: falta el parametro obligatorio monto_operacion.
     "opc_fecha_vencimiento": "2026-05-20",
     "detalle_operacion": [
         {
